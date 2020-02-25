@@ -1,0 +1,119 @@
+MyBoxLayout:
+    orientation: "vertical"
+
+    MDToolbar:
+        title: "CardEconomy"
+        right_action_items: [['refresh', lambda x: app.refresh()]]
+
+    MDBottomNavigation:
+        id: bottom_nav
+
+        MDBottomNavigationItem:
+            name: "saldo"
+            text: "SALDO"
+            icon: "desktop-mac"
+
+            GridLayout:
+                cols: 1
+
+                GridLayout:
+                    cols: 2
+                    size_hint_y: 0.25
+
+                    MDLabel:
+                        font_style: "Body1"
+                        font_size: 20
+                        size_hint_x: 0.4
+                        theme_text_color: "Primary"
+                        text: "Saldo:"
+                        halign: "right"
+
+                    MDLabel:
+                        id: label_saldo
+                        font_style: "Body1"
+                        font_size: 20
+                        theme_text_color: "Primary"
+                        text: "0 $"
+                        halign: "center"
+
+                ScrollView:
+                    id: sv_transazioni
+
+                    MDList:
+                        id: list_transazioni
+
+                MDRectangleFlatIconButton:
+                    text: "LOAD OLDER"
+                    icon: "autorenew"
+                    pos_hint: {"center_x": 0.5}
+                    size_hint_x: 1
+
+                    on_release:
+                        app.load_old()
+
+        MDBottomNavigationItem:
+            name: "new"
+            text: "NUOVA TRANSAZIONE"
+            icon: "plus-circle"
+
+            GridLayout:
+                cols: 1
+
+                MDTextField:
+                    id: text_descrizione
+                    size_hint_y: 0.4
+                    multiline: True
+                    required: True
+                    padding: 10
+                    font_size: 30
+                    hint_text: "Descrizione"
+
+
+                GridLayout:
+                    cols: 1
+                    size_hint_y: 0.6
+
+                    MDTextField:
+                        id: text_importo
+                        size_hint_y: 0.5
+                        required: True
+                        font_size: 30
+                        padding: 10
+                        hint_text: "Importo"
+
+                    GridLayout:
+                        cols: 2
+                        size_hint_y: 0.5
+
+                        MDRectangleFlatIconButton:
+                            size_hint_x: 1
+                            size_hint_y: 0.5
+                            text: "UPLOAD"
+                            icon: "cloud-upload"
+
+                            on_release:
+                                app.upload_transazione()
+
+                        GridLayout:
+                            cols: 2
+                            MDLabel:
+                                text: "SPESA"
+                                theme_text_color: "Secondary"
+                                halign: "center"
+
+                            MDCheckbox:
+                                id: spesa
+                                on_release:
+                                    if not self.active: self.active = True
+                                    ricarica.active = False
+
+                            MDLabel:
+                                text: "RICARICA"
+                                theme_text_color: "Secondary"
+                                halign: "center"
+
+                            MDCheckbox:
+                                id: ricarica
+                                on_release:
+                                    if not self.active: self.active = True
+                                    spesa.active = False
