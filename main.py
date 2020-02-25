@@ -10,7 +10,7 @@ import threading
 from datetime import datetime
 import time
 
-ip = '52.203.130.214'
+ip = '18.208.9.190'
 port = 3000
 
 class MyBoxLayout(BoxLayout):
