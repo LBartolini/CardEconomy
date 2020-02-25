@@ -247,8 +247,8 @@ class MDBottomNavigationHeader(BaseFlatButton, BasePressedButton):
     panel_color = ListProperty([1, 1, 1, 0])
 
     width = BoundedNumericProperty(
-        0, min=80, max=168, errorhandler=lambda x: small_error_warn(x)
-    )
+        0, min=0, max=99999, errorhandler=lambda x: small_error_warn(x)
+    ) # min 80, max 168
     tab = ObjectProperty()
     panel = ObjectProperty()
     active = BooleanProperty(False)

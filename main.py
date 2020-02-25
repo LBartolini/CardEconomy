@@ -28,12 +28,15 @@ Builder.load_string('''
 
     MyMdLabel:
         id: label_importo
+        font_size: 80
 
     MyMdLabel:
         id: label_data
+        font_size: 80
 
     MyMdLabel:
         id: label_descrizione
+        font_size: 45
 
 ''')
 
